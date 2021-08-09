@@ -14,7 +14,7 @@ RUN curl --show-error --retry 3 --retry-connrefused https://ftp.gnu.org/gnu/bash
     apt-get update && \
     apt-get install -y --no-install-recommends \
         bison=2:3.5.1+dfsg-1 \
-        gcc=4:9.3.0-1ubuntu2 \
+        gcc=10.3.1_git20210424-r2:9.3.0-1ubuntu2 \
         make=4.2.1-1.2 \
         libc6-dev=2.31-0ubuntu9.2 \
     && \
