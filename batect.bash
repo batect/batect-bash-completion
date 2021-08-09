@@ -33,7 +33,7 @@ function _batect_completion_proxy() {
     fi
 
     export BATECT_COMPLETION_PROXY_REGISTER_AS="_batect-$batect_version"
-    export BATECT_COMPLETION_PROXY_VERSION="0.1.0-dev"
+    export BATECT_COMPLETION_PROXY_VERSION="0.1.0"
     export BATECT_COMPLETION_PROXY_WRAPPER_PATH="$wrapper_script_path"
 
     if ! _batect_completion_proxy_have_loaded_version "$batect_version"; then
