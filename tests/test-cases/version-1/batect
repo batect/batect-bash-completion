@@ -1,0 +1,29 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+# Unused in script - used by proxy script to determine version
+VERSION="1.0.0"
+
+invocation_time="$(date -u +"%Y-%m-%dT%H:%M:%S%Z")-$(uuidgen)"
+
+cat <<EOF > "/tmp/batect-bash-completion-tests/$invocation_time.txt"
+BATECT_COMPLETION_PROXY_VERSION is $BATECT_COMPLETION_PROXY_VERSION
+BATECT_COMPLETION_PROXY_REGISTER_AS is $BATECT_COMPLETION_PROXY_REGISTER_AS
+BATECT_QUIET_DOWNLOAD is $BATECT_QUIET_DOWNLOAD
+Arguments were: $@
+EOF
+
+cat <<EOF
+$BATECT_COMPLETION_PROXY_REGISTER_AS() {
+  local word=\${COMP_WORDS[COMP_CWORD]}
+  local previous_word_number=\$(( \$COMP_CWORD -1 ))
+  local previous_word=\${COMP_WORDS[previous_word_number]}
+
+  if [[ "\$previous_word" == "--wrapper-script-path" ]]; then
+    COMPREPLY=(\$(compgen -W "path-\${BATECT_COMPLETION_PROXY_WRAPPER_PATH}-path" -- "\$word"))
+  else
+    COMPREPLY=(\$(compgen -W "--do-thing --other-thing --other-stuff --wrapper-script-path" -- "\$word"))
+  fi
+}
+EOF

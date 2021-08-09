@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+invocation_time="$(date -u +"%Y-%m-%dT%H:%M:%S%Z")-$(uuidgen)"
+
+cat <<EOF > "/tmp/batect-bash-completion-tests/$invocation_time.txt"
+BATECT_COMPLETION_PROXY_VERSION is $BATECT_COMPLETION_PROXY_VERSION
+BATECT_COMPLETION_PROXY_REGISTER_AS is $BATECT_COMPLETION_PROXY_REGISTER_AS
+Arguments were: $@
+EOF
+
+cat <<EOF
+$BATECT_COMPLETION_PROXY_REGISTER_AS() {
+  local word=\${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=(\$(compgen -W "--do-thing --other-thing --other-stuff" -- "\$word"))
+}
+EOF
