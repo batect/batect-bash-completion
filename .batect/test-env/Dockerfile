@@ -3,7 +3,7 @@ FROM ubuntu:20.04@sha256:1e48201ccc2ab83afc435394b3bf70af0fa0055215c1e26a5da9b50
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates=20210119~20.04.1 \
     curl=7.68.0-1ubuntu2.6 \
-    python3=3.8.2-0ubuntu2 \
+    python3=3.9.5-r1 \
     uuid-runtime=2.34-0.1ubuntu9 \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
