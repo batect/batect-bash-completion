@@ -28,6 +28,12 @@ RUN curl --show-error --retry 3 --retry-connrefused https://ftp.gnu.org/gnu/bash
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# hadolint ignore=DL3003
+RUN curl --location --show-error --retry 3 --retry-connrefused https://github.com/scop/bash-completion/archive/refs/tags/1.3.tar.gz --output /tmp/bash-completion-1.3.tar.gz && \
+    cd /tmp && tar xzf /tmp/bash-completion-1.3.tar.gz && \
+    cp /tmp/bash-completion-1.3/bash_completion /etc/bash_completion && \
+    rm -rf /tmp/bash-completion-1.3 /tmp/bash-completion-1.3.tar.gz
+
 ENV PATH=/shells/bash-3.2/bin:$PATH
 
 COPY test_complete.bash /usr/local/bin/test_complete.bash

@@ -27,7 +27,7 @@ containers:
     build_directory: .batect/test-env
     volumes:
       - local: batect.bash
-        container: /completions/batect.bash
+        container: /etc/bash_completion.d/batect.bash
         options: ro
       - local: tests
         container: /tests

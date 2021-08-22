@@ -1,1 +1,1 @@
-. /completions/batect.bash
+. /etc/bash_completion

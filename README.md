@@ -8,6 +8,7 @@ Shell tab completions for [Bash](https://www.gnu.org/software/bash/).
 
 * [Batect](https://batect.dev) v0.73 or later in your project
 * [Bash](https://www.gnu.org/software/bash/) v3.2 or later
+* [bash-completion](https://github.com/scop/bash-completion) v1.3 or later
 
 ## Installing
 
@@ -26,13 +27,6 @@ You'll need to restart Bash for the change to take effect.
 
 If you are already using [`bash-completion`](https://github.com/scop/bash-completion), place a copy of [`batect.bash`](batect.bash) in your completions directory
 (usually `~/.local/share/bash-completion/completions`).
-
-You'll need to restart Bash for the change to take effect.
-
-### Manual install without `bash-completion`
-
-1. Download a copy of [`batect.bash`](batect.bash).
-2. Add the following line to your `~/.bash_profile` (macOS) or `~/.bashrc` (other operating systems): `source <path to batect.bash>` (for example: `source /completions/batect.bash`)
 
 You'll need to restart Bash for the change to take effect.
 
