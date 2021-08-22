@@ -36,7 +36,9 @@ function test_complete() {
         previous_word="${COMP_WORDS[$((COMP_CWORD - 1))]}"
     fi
 
-    $completion_function "$command_name" "$current_word" "$previous_word" || { echo "$0: completion function '$completion_function' failed." >/dev/stderr && exit 1; }
+    $completion_function "$command_name" "$current_word" "$previous_word" || {
+        echo "$0: completion function '$completion_function' failed." >/dev/stderr && exit 1;
+    }
 
     printf '%s\n' "${COMPREPLY[@]}"
 }
