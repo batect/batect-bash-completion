@@ -29,8 +29,14 @@ function test_complete() {
 
     local completion_function=$(echo "$completion_spec" | sed -E 's/.* -F ([^ ]*).*/\1/') # Horrible HACK: find the value of the -F argument
     local COMPREPLY=()
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    local previous_word=""
 
-    $completion_function || { echo "$0: completion function '$completion_function' failed." >/dev/stderr && exit 1; }
+    if [[ $COMP_CWORD -gt 1 ]]; then
+        previous_word="${COMP_WORDS[$((COMP_CWORD - 1))]}"
+    fi
+
+    $completion_function "$command_name" "$current_word" "$previous_word" || { echo "$0: completion function '$completion_function' failed." >/dev/stderr && exit 1; }
 
     printf '%s\n' "${COMPREPLY[@]}"
 }
