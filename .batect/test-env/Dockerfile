@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates=20210119~20.04.2 \
     curl=7.68.0-1ubuntu2.7 \
     python3=3.8.2-0ubuntu2 \
-    uuid-runtime=2.34-0.1ubuntu9.1 \
+    uuid-runtime=2.34-0.1ubuntu9.3 \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
