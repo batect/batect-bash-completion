@@ -2,7 +2,7 @@ FROM ubuntu:22.04@sha256:06b5d30fabc1fc574f2ecab87375692299d45f8f190d9b71f512deb
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates=20211016 \
-    curl=7.81.0-1 \
+    curl=7.81.0-1ubuntu1.2 \
     python3=3.10.4-0ubuntu2 \
     uuid-runtime=2.37.2-4ubuntu3 \
     && apt-get clean && \
